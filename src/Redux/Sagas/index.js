@@ -1,0 +1,1 @@
+export { watchGetQuranData } from './quran';
