@@ -6,7 +6,7 @@ import styles from './styles';
 const SurahItem = ({ Props, item }) => {
     const { number, englishName, englishNameTranslation, name, revelationType } = item
     return (
-        <TouchableOpacity style={styles.itemContainer} onPress={() => Props.navigation.navigate('SurahPage',{item})}>
+        <TouchableOpacity key={number} style={styles.itemContainer} onPress={() => Props.navigation.navigate('SurahPage',{item})}>
             <Text style={styles.surahNum} >{number}</Text>
             <View style={styles.engNameContainer} >
                 <Text style={styles.surahEngName} >{englishName}</Text>

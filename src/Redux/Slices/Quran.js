@@ -7,7 +7,8 @@ const QuranData = createSlice({
         loading: false,
         success: false,
         fail: false,
-        errorMessage: ''
+        errorMessage: '',
+        network:''
     },
     reducers: {
         getQuran(state, action) {
@@ -24,10 +25,14 @@ const QuranData = createSlice({
             state.errorMessage = error
             state.fail = true
             state.loading = false
+        },
+        setNetwork(state, action){
+            const { network } = action.payload
+            state.network = network
         }
     }
 })
 
-export const { getQuran, setQuran, getError } = QuranData.actions;
+export const { getQuran, setQuran, getError, setNetwork } = QuranData.actions;
 
 export default QuranData.reducer;

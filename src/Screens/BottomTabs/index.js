@@ -11,7 +11,7 @@ const Tab = createBottomTabNavigator();
 
 
 
-const BottomTabs = () => {
+const BottomTabs = (props) => {
     return (
             <SafeAreaView style={styles.Container}>
             <View style={styles.headerContainer} >

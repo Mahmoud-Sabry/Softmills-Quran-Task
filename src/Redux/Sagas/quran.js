@@ -7,8 +7,8 @@ export function* getQuranData() {
         const { data } = yield call(axios.get, 'http://api.alquran.cloud/v1/quran/ar.muyassar');
         const { surahs } = data.data
         yield put(setQuran({ data: surahs }));
-    } catch (error) {
-        yield put(getError({ error:'Error' }));
+    } catch ({message}) {
+        yield put(getError({ error: message }));
     }
 }
 

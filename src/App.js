@@ -11,6 +11,7 @@ const Drawer = createDrawerNavigator();
 console.disableYellowBox = true;
 
 const App = () => {
+
     return (
         <>
             <StatusBar barStyle="dark-content" />
