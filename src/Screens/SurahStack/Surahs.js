@@ -12,20 +12,24 @@ const Surahs = (props) => {
     const dispatch = useDispatch();
     const quran = useSelector(state => state.quran.quran)
     const success = useSelector(state => state.quran.success)
-    const network = useSelector(state => state.quran.network)
     const fail = useSelector(state => state.quran.fail)
     const errorMessage = useSelector(state => state.quran.errorMessage)
-    success ? null : dispatch(getQuran())
 
     const netInfo = useNetInfo();
 
-
-    if (!success || (netInfo.isConnected && !success ) ) {
+    if (netInfo.isConnected && !success) {
         dispatch(getQuran())
         return (
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }} >
-                <ActivityIndicator size="large" color="green" />
-                <Text style={{ fontSize: 25, marginVertical: 5, color: 'green', textAlign:'center' }}>{fail ? errorMessage : 'Loading'}</Text>
+                {!fail && <ActivityIndicator size="large" color="green" />}
+                <Text style={styles.ErrorText}>{fail ? errorMessage : 'Loading'}</Text>
+            </View>
+        )
+    } else if (!netInfo.isConnected && !success) {
+
+        return (
+            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }} >
+                <Text style={styles.ErrorText}>No Internet Connection</Text>
             </View>
         )
     } else {
